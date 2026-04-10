@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>契約イベント登録</h1>
+<form method="post" action="/events/new">
+  <label>contract_id</label>
+  <input name="contract_id" required>
+
+  <label>event_type</label>
+  <select name="event_type" required>
+    <option>APPLICATION_SUBMITTED</option>
+    <option>APPLICATION_APPROVED</option>
+    <option>APPLICATION_REJECTED</option>
+    <option>APPLICATION_AUTO_APPROVED</option>
+    <option>API_KEY_ISSUED</option>
+    <option>BUDGET_NUMBER_CHANGED</option>
+    <option>PLAN_CHANGED</option>
+    <option>CANCELLATION_REQUESTED</option>
+    <option>CONTRACT_TERMINATED</option>
+  </select>
+
+  <label>occurred_at (ISO8601)</label>
+  <input name="occurred_at" value="2026-04-10T00:00:00+09:00" required>
+
+  <label>actor_type</label>
+  <select name="actor_type">
+    <option>USER</option>
+    <option>ADMIN</option>
+    <option>SYSTEM</option>
+    <option>BATCH</option>
+  </select>
+
+  <label>actor_id</label>
+  <input name="actor_id">
+
+  <label>payload_json</label>
+  <textarea name="payload_json" rows="12" required>{
+  "requested_plan_code": "STARTER",
+  "budget_number": "BGT-0001",
+  "budget_owner_name": "Owner A",
+  "api_key_name": "team-a-key",
+  "team_name": "Team A",
+  "primary_contact_name": "Primary",
+  "secondary_contact_name": "Secondary",
+  "department_name": "Dept A"
+}</textarea>
+
+  <button type="submit">登録</button>
+</form>
+{% endblock %}

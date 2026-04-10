@@ -1,0 +1,23 @@
+[project]
+name = "service-contract"
+version = "0.1.0"
+description = "Service contract management with FastAPI SSR and DuckDB"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.2.0",
+  "fastapi>=0.115.0",
+  "jinja2>=3.1.0",
+  "openpyxl>=3.1.0",
+  "pandas>=2.2.0",
+  "python-multipart>=0.0.9",
+  "uvicorn>=0.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28.0",
+  "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

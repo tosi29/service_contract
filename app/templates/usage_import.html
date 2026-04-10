@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>利用実績取込</h1>
+<p>必須列: contract_id, usage_date, model_name, used_tokens</p>
+<form method="post" action="/usage/import" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".csv,.xlsx" required>
+  <button type="submit">取込</button>
+</form>
+{% endblock %}

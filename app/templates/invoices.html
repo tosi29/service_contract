@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>請求一覧</h1>
+<form method="post" class="inline" action="/billing/2026-03/create" onsubmit="this.action='/billing/' + this.yyyymm.value + '/create'">
+  <div>
+    <label>対象年月 (YYYY-MM)</label>
+    <input name="yyyymm" value="2026-03" required>
+  </div>
+  <button type="submit">請求作成</button>
+</form>
+
+<p>
+  <a href="/export/invoices.csv">請求CSV</a>
+  <a href="/export/invoices.xlsx">請求Excel</a>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invoice ID</th>
+      <th>Contract ID</th>
+      <th>Budget</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Year-Month</th>
+      <th>Total (Yen)</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in invoices %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+      <td>{{ row[5] }}</td>
+      <td>{{ row[6] }}</td>
+      <td>{{ row[7] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
